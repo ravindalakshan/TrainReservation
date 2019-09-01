@@ -1,0 +1,90 @@
+.one-way-middle-panel{
+	text-align:center;
+	/* background-color:#2b3450; */
+	background-color:#607D8B;
+	color:white;
+	/* margin-top:10px; */
+	padding:10px;
+	margin-bottom:20px;
+	
+}
+
+.summary-panel{
+	text-align:center;
+	background-color:#2b3450;
+	color:white;
+	margin-top:10px;
+	
+}
+
+.return-way-middle-panel{
+	text-align:center;
+	background-color:#607D8B;
+	color:white;
+	padding:10px;
+	/* margin-top:10px; */
+	margin-bottom:20px;
+}
+
+th{
+	/* color:white; */
+}
+tbody{
+	/* color:white; */
+}
+.custom-align{
+	text-align:center;
+}
+
+.right-header{
+     border-top:3px solid #ffc107;
+     color:white;
+     text-align:center;
+}
+ .left-header{
+     color:white;
+     text-align:center;
+     display: inline-block;
+}
+ .cus-tab{
+     width:100%;
+     text-align:center;
+     color:white;
+}
+
+ .cus-th{
+     border:1px solid #ffc107;
+}
+
+
+
+/* ------------------
+ */
+
+.summary-ble{
+	background-color: #f1f1f1;
+}
+.summary-ble> .header{
+    font-size: 20px;
+    font-weight: 100;
+    border-bottom: 1px solid #d6d6d6;
+}
+.summary-ble> .sec1{
+	font-size: 13px;
+    font-weight: 100;
+    background-color: #e2e2e2;
+}
+.summary-ble> .sec2{
+	font-weight: 100;
+    background-color: #c5d2d8;
+} 
+.reservation-table{
+	margin-top: 10px;
+}
+.reservation-table thead th {
+    vertical-align: bottom;
+    border: 1px solid #9E9E9E !important;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 5px;
+}

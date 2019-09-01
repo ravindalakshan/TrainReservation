@@ -1,0 +1,500 @@
+@font-face {
+    src: url(../fonts/gijgo-material.woff);
+}
+
+.nav-ble {
+    background-color: #274a87 !important;
+}
+
+.nav-item {
+    /*    padding: 10px 20px;*/
+}
+
+.nav-link {
+    padding: 20px;
+    /*    margin: 0 15px;*/
+}
+
+.nav-item:hover {
+    background-color: #ffbd00;
+    color: black;
+}
+
+nav-item:hover~.nav-link {
+    color: black;
+}
+
+.navbar {
+    padding: 0;
+    /*    box-shadow: 0px 3px 5px 1px rgba(8, 20, 43, 0.41);*/
+}
+
+.bg-dark2 {
+    background-color: #141825;
+}
+
+.bg-dark3 {
+    background-color: #274a87;
+}
+
+.text-color {
+    color: darkgrey;
+}
+
+#home {
+    height: 100vh;
+}
+
+.carousel-inner {
+    height: 100vh;
+}
+
+
+/* #contact{
+    background-image: url(../images/slider-01_bk.jpg);
+}
+#about{
+    background-image: url(../images/back/800252.png);
+    background-position: center;
+    background-size: cover;
+}
+#faq{
+    background-image: url(../images/back/141516.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#tnc{
+    background-image: url(../images/back/832196.jpg);
+    background-position: center;
+    background-size: cover;
+} */
+
+
+/*=========================*/
+
+#search-box {
+    width: 360px;
+    height: 60vh;
+    background: #464646;
+    position: absolute;
+    float: left;
+    z-index: 12;
+    margin: 10% 8%;
+    /* border-radius: 35px; */
+    /* box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.34); */
+    border: 1px solid #bdbdbd;
+}
+
+.search-box {
+    position: absolute;
+    z-index: 1;
+    width: 360px;
+    /* margin: 100px 25px; */
+    top: 20%;
+    height: auto;
+    background: #28304c;
+    left: 7%;
+}
+
+
+/*=====================================*/
+
+
+/*input*/
+
+.input-ble {
+    background: #28304c;
+    border: 1px solid #a0a0a0;
+    border-radius: 0;
+    color: white;
+}
+
+.input-ble:focus {
+    background-color: #28304c;
+    color: white;
+}
+
+.input-datapick-ble {
+    background: #28304c !important;
+    border: 1px solid #a0a0a0 !important;
+    color: white !important;
+    padding: 4px 11px !important;
+    font-family: inherit !important;
+    font-size: 0.875rem !important;
+}
+
+.gj-icon {
+    padding: 4px;
+    color: #a0a0a0;
+}
+
+.label-ble {
+    float: left;
+    padding: 0;
+    margin: 4px 0;
+    font-size: 14px
+}
+
+.float-left-ble {
+    float: left
+}
+
+.group-btn-ble {
+    width: 100%
+}
+
+.btn-primary:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #05070a;
+    border-color: #a0a0a0;
+    /* background-color: white; */
+    border: 0px solid;
+    border-radius: 0;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1a1f31;
+    border-color: #a0a0a0;
+    border: 0px solid;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: gray;
+    border-color: #a0a0a0;
+    border: 0px solid;
+    border-radius: 0;
+}
+
+.margin-left-btn {
+    margin-left: -55px;
+}
+
+.margin-right-btn {
+    margin-right: -55px;
+}
+
+#return-date-ble {
+    display: none;
+}
+
+.btn {
+    /* width: 40%; */
+}
+
+.bg-primary-ble {
+    background-color: #141825 !important;
+}
+
+.form-group {
+    margin: 0.5rem;
+}
+
+.contact-ble-1 {
+    background: white;
+    padding: 30px;
+}
+
+.contact-ble-2 {
+    padding: 150px 20px;
+    background-image: url(../images/back/832196.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.contact-ble-2 span {
+    color: white;
+}
+
+.contact-ble-2 span:first-child {
+    font-weight: bolder;
+}
+
+.contact-ble-2>.contact-no-ble {
+    color: rgb(143, 143, 143);
+    font-weight: 600;
+}
+
+
+/*================================================*/
+
+.info-details-ble {
+    position: absolute;
+    width: auto;
+    height: auto;
+    /* background: #a2a2a261; */
+    z-index: 1;
+    right: 10%;
+    top: 35%;
+    /* margin: 100px 25px; */
+    padding: 35px;
+    box-sizing: border-box;
+    border-radius: 51px;
+    text-align: center;
+}
+
+.features-ble {
+    width: 300px;
+    height: 50px;
+    border-radius: 31px;
+    background-color: white;
+    padding: 4px;
+    text-align: center;
+    margin: 0px 150px;
+}
+
+.img-details-ble {
+    margin: 0 5px;
+}
+
+.faq-collapse-ble {
+    text-decoration: none !important;
+    text-align: left
+}
+
+.card-header-ble {
+    padding: 0;
+}
+
+
+/*======================================
+gallery
+*/
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    /* border: 1px solid rgba(0, 0, 0, 0.125); */
+    border-radius: 0.25rem;
+    box-shadow: 0 0 13px 3px #0a0c10;
+}
+
+.bs-example .card {
+    box-shadow: 0 0 0 0 #0a0c10;
+}
+
+.card-header-ble {
+    padding: 0;
+}
+
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+    .info-details-ble {
+        position: absolute;
+        width: auto;
+        height: auto;
+        /* background: #a2a2a261; */
+        z-index: 1;
+        right: 1%;
+        top: 35%;
+        /* margin: 100px 25px; */
+        padding: 35px 0;
+        box-sizing: border-box;
+        border-radius: 51px;
+        text-align: center;
+    }
+}
+
+
+/* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .info-details-ble {
+        position: absolute;
+        width: auto;
+        height: auto;
+        /* background: #a2a2a261; */
+        z-index: 1;
+        right: 1%;
+        top: 10%;
+        /* margin: 100px 25px; */
+        padding: 35px 0;
+        box-sizing: border-box;
+        border-radius: 51px;
+        text-align: center;
+    }
+    #home {
+        height: 100%;
+    }
+    .carousel-inner {
+        height: 100%;
+    }
+}
+
+
+/* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .search-box {
+        position: absolute;
+        z-index: 1;
+        width: 70%;
+        margin: 100px 20px;
+        height: auto;
+        background: #28304c;
+        left: 12%;
+        top: 24%;
+    }
+    .nav-ble {
+        padding: 0px
+    }
+    .navbar-brand {
+        margin-left: 1rem;
+    }
+    .info-details-ble {
+        position: absolute;
+        width: auto;
+        height: auto;
+        /* background: #a2a2a261; */
+        z-index: 1;
+        right: 7%;
+        top: 10%;
+        /* margin: 100px 25px; */
+        padding: 35px;
+        box-sizing: border-box;
+        border-radius: 51px;
+        text-align: center;
+    }
+}
+
+
+/* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .search-box {
+        position: absolute;
+        z-index: 1;
+        width: 70%;
+        margin: 100px 20px;
+        height: auto;
+        background: #28304c;
+        left: 12%;
+        top: 24%;
+    }
+    .info-details-ble {
+        position: absolute;
+        width: auto;
+        height: auto;
+        /* background: #a2a2a261; */
+        z-index: 1;
+        right: 18%;
+        top: 10%;
+        /* margin: 100px 25px; */
+        padding: 35px;
+        box-sizing: border-box;
+        border-radius: 51px;
+        text-align: center;
+    }
+}
+
+
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .search-box {
+        position: absolute;
+        z-index: 1;
+        width: 90%;
+        margin: 100px 0;
+        height: auto;
+        background: #28304c;
+        left: 5%;
+        top: 24%;
+    }
+    .info-details-ble {
+        position: absolute;
+        width: auto;
+        height: auto;
+        /* background: #a2a2a261; */
+        z-index: 1;
+        right: 0%;
+        top: 8%;
+        /* margin: 100px 25px; */
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 51px;
+        text-align: center;
+    }
+    .features-ble {
+        margin: 0px 80px;
+    }
+}
+
+
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .search-box {
+        position: absolute;
+        z-index: 1;
+        width: 90%;
+        margin: 100px 0;
+        height: auto;
+        background: #28304c;
+        left: 5%;
+        top: 24%;
+    }
+    .info-details-ble {
+        position: absolute;
+        width: auto;
+        height: auto;
+        /* background: #a2a2a261; */
+        z-index: 1;
+        top: 10%;
+        right: 0%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border-radius: 51px;
+        text-align: center;
+    }
+    .features-ble {
+        width: auto;
+        height: 50px;
+        border-radius: 31px;
+        background-color: white;
+        padding: 4px;
+        text-align: center;
+        margin: 0px 15px;
+    }
+    .display-4 {
+        font-size: 3.0rem;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+}
+
+.mobi-footer > i{
+    font-size: 10px;
+    margin-right: 5px;
+}

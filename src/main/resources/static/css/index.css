@@ -1,0 +1,22 @@
+@font-face {
+    src: url(../fonts/gijgo-material.woff);
+}
+
+.nav-ble {
+    background-color: #122D61 !important;
+}
+
+.nav-link {
+    padding: 20px !important;
+    font-size: 18px;
+    color: white;
+}
+
+.nav-item:hover {
+    background-color: #ffbd00 !important;
+    color: black;
+}
+
+nav-item:hover~.nav-link {
+    color: black;
+}
