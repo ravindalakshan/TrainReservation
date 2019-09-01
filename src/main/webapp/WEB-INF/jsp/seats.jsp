@@ -1,3 +1,4 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <jsp:include page="template/header.jsp" />
 
 <!-- Navigation -->
@@ -7,11 +8,9 @@
         <div class="row">
             <div class="col-md-12 row">
                 <div class="col-md-1"></div>
-                <div class="col-md-2 step-ble comleted-ble">Home <i class="fas fa-check-circle"></i><span><i class="fas fa-chevron-right"></i></span>
-                </div>
-                <div class="col-md-2 step-ble ongoing-ble">Check Availability<span><i
-                            class="fas fa-chevron-right"></i></span></div>
-                <div class="col-md-2 step-ble ">Seat Plan<span><i class="fas fa-chevron-right"></i></span></div>
+                <div class="col-md-2 step-ble comleted-ble"><a href="/">Home</a> <i class="fas fa-check-circle"></i><span><i class="fas fa-chevron-right"></i></span></div>
+                <div class="col-md-2 step-ble comleted-ble"><a href="/dashboard">Check Availability</a> <i class="fas fa-check-circle"></i><span><i class="fas fa-chevron-right"></i></span></div>
+                <div class="col-md-2 step-ble ongoing-ble">Seat Plan<span><i class="fas fa-chevron-right"></i></span></div>
                 <div class="col-md-2 step-ble">Resavation<span><i class="fas fa-chevron-right"></i></span></div>
                 <div class="col-md-2 step-ble">Summary</div>
                 <div class="col-md-1"></div>
@@ -20,18 +19,17 @@
     </div>
 </header>
 
-<% if (${seat_error}) { %>
-<script>
-    $(window).on('load', function() {
-        Swal.fire({
-            type: 'error',
-            title: 'Error',
-            text: '!',
-            footer: '<a href>Why do I have this issue?</a>'
+<c:if test="${seat_error == 'true'}">
+    <script>
+        $(window).on('load', function() {
+            Swal.fire({
+                type: 'error',
+                title: 'Error',
+                text: 'Requested number of seats not available'
+            });
         });
-    });
-</script>
-<% } %>
+    </script>
+</c:if>
 
 <div class="container">
     <div class="d-flex justify-content-center">
@@ -50,4 +48,9 @@
     </div>
 </div>
 
-<jsp:include page="template/footer.jsp" />
+<div style="position: absolute; bottom: 0; left: 0; right: 0">
+    <jsp:include page="template/footer.jsp" />
+</div>
+
+    </body>
+</html>

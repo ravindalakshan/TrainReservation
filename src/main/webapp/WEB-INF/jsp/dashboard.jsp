@@ -1,3 +1,4 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <jsp:include page="template/header.jsp" />
 
 <!-- Navigation -->
@@ -47,7 +48,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-8 mx-auto">
-                        <form>
+                        <form id="modifySearchForm">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label class="col-md-12 label-land" for="fromSelect">From</label>
@@ -91,11 +92,11 @@
                                     <label class="col-md-12 label-land" for="adult_ble">Select Type</label>
                                     <div class="btn-group btn-group-toggle group-btn-ble" data-toggle="buttons">
                                         <label class="btn btn-primary active " id="oneway-ble">
-                                            <input type="radio" name="options" id="option1" autocomplete="off"
-                                                checked=""> One Way
+                                            <input type="radio" name="isReturn" id="option1" autocomplete="off"
+                                                checked="" value="N"> One Way
                                         </label>
                                         <label class="btn btn-primary " id="return-ble">
-                                            <input type="radio" name="options" id="option2" autocomplete="off">
+                                            <input type="radio" name="isReturn" id="option2" autocomplete="off" value="Y">
                                             Return
                                         </label>
                                     </div>
@@ -103,7 +104,7 @@
                                 <div class="form-group col-md-4 return-date-ble" id="return-date-ble">
                                     <label class="col-md-12 label-land" for="returnDateInput">Return Date</label>
                                     <input type="text" id="returnDateInput" class="form-control form-control-sm  input-datapick-ble-land"
-                                        placeholder="Return Date" readonly="true">
+                                        placeholder="Return Date" value="${returnDate}">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -131,9 +132,9 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1"><i class="fas fa-subway"></i> One Way Trains </label>
                         <div class="table-title-route">
-                            <span>Colombo</span>
+                            <span id="upStationView1"></span>
                             <span><i class="fas fa-chevron-right"></i></span>
-                            <span>Kandy</span>
+                            <span id="downStationView1"></span>
                             <span><img src="images/table/train-3.svg" style="float: right" height="60"/></span>
                         </div>
                         <small id="emailHelp" class="form-text text-muted">You can change train times</small>
@@ -202,7 +203,7 @@
 
 </section>
 
-<section id="landing2" class="table-return-ble">
+<section id="returnTrainsView" class="table-return-ble">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-10 mx-auto">
@@ -211,9 +212,9 @@
                         <label for="exampleInputEmail1"><i class="fas fa-subway"></i> Return Trains
                         </label>
                         <div class="table-title-route">
-                            <span>Kandy</span>
+                            <span id="downStationView2"></span>
                             <span><i class="fas fa-chevron-right"></i></span>
-                            <span>Colombo</span>
+                            <span id="upStationView2"></span>
                             <span><img src="images/table/train-3.svg" style="float: right; transform: rotateY(180deg)" height="60"/></span>
                         </div>
                         <small id="emailHelp" class="form-text text-muted">You can change train times</small>
@@ -280,6 +281,8 @@
 </section>
 
 <script>
+    const seatCount = "${passengersCount}";
+
     $('#forwardTrainsTable').DataTable({
         responsive: true,
         "bPaginate": false,
@@ -350,6 +353,13 @@
     var allStations;
 
     $(window).on('load', function() {
+        const isReturn = "${isReturn}";
+        if (isReturn === "true") {
+            document.forms["modifySearchForm"]["isReturn"].value = "Y";
+        } else {
+            document.forms["modifySearchForm"]["isReturn"].value = "N";
+        }
+
         $.get("https://apps.mobitel.lk/MTRWebWS/home", function(data) {
             allStations = data.obj;
 
@@ -382,8 +392,19 @@
             return station.stationID === toStationId;
         })
 
-        $("#fromStation").val(fromStation.stationName);
-        $("#toStation").val(toStation.stationName);
+        $("#fromStation").html(fromStation.stationName);
+        $("#toStation").html(toStation.stationName);
+        $("#upStationView1").html(fromStation.stationName);
+        $("#downStationView1").html(toStation.stationName);
+        $("#upStationView2").html(fromStation.stationName);
+        $("#downStationView2").html(toStation.stationName);
+
+        const isReturn = document.forms["modifySearchForm"]["isReturn"].value;
+        if (isReturn === "N") {
+            $("#returnTrainsView").hide();
+        } else {
+            $("#returnTrainsView").show();
+        }
     }
 
     function showDateInfo() {
@@ -503,10 +524,12 @@
     }
 
     function selectTrain(trainCode, classCode, departureTime) {
-        console.log(trainCode);
-        console.log(classCode);
-        console.log(departureTime);
+        const redirectUrl = "yoururl?train=" + trainCode + "&clazz=" + classCode + "&departureDate=" + departureTime + "&seatCount=" + seatCount;
+        window.location = redirectUrl;
     }
 </script>
 
 <jsp:include page="template/footer.jsp" />
+
+</body>
+</html>

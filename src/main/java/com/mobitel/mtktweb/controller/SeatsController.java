@@ -12,15 +12,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SeatsController {
-	private static final String SEATS_AVAILABLE_KEY = "yes";
+	private static final String SEATS_AVAILABLE_VALUE = "yes";
 
 	@Autowired
 	private WebTicketService webTicketService;
 
 	@GetMapping("/seats")
-	public String loadSeats(@RequestParam(defaultValue = "0") String seatCount, Model model) {
+	public String loadSeats(@RequestParam String train, @RequestParam(defaultValue = "3") String clazz, @RequestParam(defaultValue = "0") String seatCount, Model model) {
+		model.addAttribute("train", train);
 		model.addAttribute("seatCount", seatCount);
-		model.addAttribute("seat_error", false);
+		model.addAttribute("class", clazz);
+		model.addAttribute("seat_error", "false");
 		return "seats";
 	}
 
@@ -28,10 +30,10 @@ public class SeatsController {
 	public String checkAvailability(SeatRequestEntity seatRequestEntity, Model model) {
 		// final String isAvailable = webTicketService.checkSeatsAvailability(seatRequestEntity);
 
-		// if (SEATS_AVAILABLE_KEY.equalsIgnoreCase(isAvailable)) {
+		// if (SEATS_AVAILABLE_VALUE.equalsIgnoreCase(isAvailable)) {
 		// 	return "seats";
 		// } else {
-			model.addAttribute("seat_error", true);
+			model.addAttribute("seat_error", "true");
 			return "seats";
 		// }
 	}

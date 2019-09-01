@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- Bootstrap -->
 
+<!-- Sweet alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
 <!--main css-->
 <link href="css/train_seat_css.css" rel="stylesheet" type="text/css"
 	media="screen">
@@ -216,7 +219,7 @@
 						<div class="row margin_auto">
 							<div class="form-group">
 								<div class="dropdown">
-									<select class="form-control form-control-sm" id="fromSelect" name="fromSt">
+									<select class="form-control form-control-sm" id="fromSelect" name="fromSt" required>
 										<c:forEach items="${stations}" var="station">
 											<option value="${station.stationID}">${station.stationName}</option>
 										</c:forEach>
@@ -239,7 +242,7 @@
 						<div class="row margin_auto">
 							<div class="form-group">
 								<div class="dropdown">
-									<select class="form-control form-control-sm" id="toSelect" name="toSt">
+									<select class="form-control form-control-sm" id="toSelect" name="toSt" required>
 										<c:forEach items="${stations}" var="station">
 											<option value="${station.stationID}">${station.stationName}</option>
 										</c:forEach>
@@ -301,7 +304,7 @@
 							style="display: none;">
 							<div class="form-group has-feedback">
 								<input type="text" class="form-control form-control_my date"
-									id="datepicker2" name="retDate" placeholder="RETURN DATE *"> <i
+									data-date-format="dd-M-yyyy" id="datepicker2" name="retDate" placeholder="RETURN DATE *"> <i
 									class="glyphicon glyphicon-calendar form-control-feedback"></i>
 							</div>
 						</div>
@@ -316,14 +319,12 @@
 							<!--and typesetting industry.-->
 							<!--</p>-->
 
-							<div
-								class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block button_div1">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block button_div1">
 								<input type="submit" class="btn btn-default"
 									style="width: 100%;" value="SEARCH">
 							</div>
 
-							<div
-								class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block button_div2">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block button_div2">
 								<input type="reset" class="btn btn-default" style="width: 100%;"
 									value="RESET" />
 							</div>
@@ -754,6 +755,15 @@
 				$('#datepicker3').datepicker('getFormattedDate')
 			);
 			$(this).datepicker('hide');
+
+			const upDate = new Date($(this).val());
+			const downDate = new Date($('#datepicker2').val());
+
+			if (upDate.getTime() > downDate.getTime()) {
+				$('#datepicker2').val('');
+			}
+
+			$('#datepicker2').datepicker('setStartDate', $(this).val());
 		});
 
 		//============================
@@ -825,6 +835,10 @@
 		});
 
 		function validateForm() {
+			return stationValidation() && dateValidation();		
+		}
+
+		function stationValidation() {
 			const from = document.forms["searchForm"]["fromSt"].value;
 			const to = document.forms["searchForm"]["toSt"].value;
 			if (from === to) {
@@ -835,7 +849,42 @@
 				});
 				return false;
 			}
-		} 
+			return true;
+		}
+
+		function dateValidation() {
+			const upDate = new Date($('#datepicker1').val());
+			if (upDate === '') {
+				Swal.fire({
+					type: 'error',
+					title: 'Invalid input',
+					text: 'Departure date not set'
+				});
+				return false;
+			}
+			const isReturn = document.forms["searchForm"]["isReturn"].value;
+			if (isReturn === 'Y') {
+				const downDate = new Date($('#datepicker2').val());
+				if (downDate === '') {
+					Swal.fire({
+						type: 'error',
+						title: 'Invalid input',
+						text: 'Return date not set'
+					});
+					return false;
+				}
+				if (upDate.getTime() > downDate.getTime()) {
+					Swal.fire({
+						type: 'error',
+						title: 'Invalid input',
+						text: 'Departure date is more recent than return date'
+					});
+					return false;
+				}
+			}
+
+			return true;
+		}
 
 		// $(window).on('load', function() {
 		// 	$.get("https://apps.mobitel.lk/MTRWebWS/home", function(data) {

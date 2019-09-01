@@ -16,6 +16,11 @@
     font-weight: 100;
 }
 
+.step-ble>a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .comleted-ble {
     color: #4CAF50;
     font-weight: 300 !important;

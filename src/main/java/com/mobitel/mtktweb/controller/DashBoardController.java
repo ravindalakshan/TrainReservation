@@ -1,8 +1,9 @@
 package com.mobitel.mtktweb.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.servlet.http.HttpServletResponse;
 import com.mobitel.mtktweb.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -84,6 +85,7 @@ public class DashBoardController {
 		model.addAttribute("to", searchInfo.getToSt());
 		model.addAttribute("date", searchInfo.getDepDate());
 		model.addAttribute("passengersCount", searchInfo.getNoOfUsers());
+		model.addAttribute("isReturn", searchInfo.isReturn());
 		model.addAttribute("returnDate", searchInfo.getRetDate());
 		System.out.println("|MTKTWEB Dashboard POST CNTRL | " + info);
 		return "dashboard";
@@ -132,8 +134,7 @@ public class DashBoardController {
 	}
 
 	@GetMapping("/dashboard")
-	public String redirectDashBoard(SearchInfoEntity searchInfo, Model model) {
-		System.out.println("-----------get------------------");
-		return "index";
+	public void redirectDashBoard(final HttpServletResponse response) throws IOException {
+		response.sendRedirect("index");
 	}
 }
